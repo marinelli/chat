@@ -4,7 +4,7 @@ HOWTO:
 
 ```
 $ stack build
-$ stack exec chat-exe
+$ stack exec chat-exe [port number, default 10000]
 ```
 
 and

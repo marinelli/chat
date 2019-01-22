@@ -77,6 +77,10 @@ import Control.Exception
   ( finally
   )
 
+import System.Environment
+  ( getArgs
+  )
+
 
 
 type ClientId = Integer
@@ -195,8 +199,12 @@ runClient clientSource server client@Client{..} =
 
 main :: IO ()
 main = do
+  cmdArgs <- getArgs
+  let port = case cmdArgs of
+               []    -> read "10000"  :: Int
+               p : _ -> read p        :: Int
   server <- newServer
-  runTCPServer (serverSettings 10000 "*") $ \ app -> do
+  runTCPServer (serverSettings port "*") $ \ app -> do
     (fromClient, client) <- appSource app $$+ (addClient server app)
                               `fuseUpstream` appSink app
     print client
