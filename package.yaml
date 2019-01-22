@@ -1,0 +1,41 @@
+name:                chat
+version:             0.1.0.0
+github:              "marinelli/chat"
+license:             MIT
+author:              "Giorgio Marinelli"
+maintainer:          "giorgio@marinel.li"
+copyright:           "© 2018 Giorgio Marinelli"
+
+extra-source-files:
+- README.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Writing Haskell
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/marinelli/chat#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+
+executables:
+  chat-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - bytestring
+    - conduit
+    - conduit-combinators
+    - conduit-extra
+    - stm
+    - stm-conduit
+    - containers
+    - word8
+    - async
